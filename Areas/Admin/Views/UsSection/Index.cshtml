@@ -1,0 +1,53 @@
+﻿@{
+    int count = 0;
+}
+@model List<UsSection>
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title">Us Section</h3>
+                <a asp-action="Create" asp-controller="UsSection"> <button class="btn btn-success">Create</button></a>
+                <div class="table-responsive">
+                    <table class="table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">#</th>
+                                <th class="border-top-0">Image</th>
+                                <th class="border-top-0">Title</th>
+                                <th class="border-top-0">Description</th>
+                                <th class="border-top-0">Icon</th>
+                                <th class="border-top-0">Settings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in Model){
+
+                            <tr>
+                                <td>@(++count)</td>
+                                    <td><img src="~/assets/img/@item.ImageName" style="width:100px" /></td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                <td>@item.IconName</td>
+                                <td>
+                                        <a asp-action="Read" asp-controller="UsSection" asp-route-id="@item.Id"><button class="btn btn-info">Details</button></a>
+                                    <form method="get" asp-action="Update" asp-controller="UsSection" asp-route-id="@item.Id">
+                                        <button class="btn btn-warning">Edit</button>
+                                    </form>
+                                        <form method="post" asp-action="Delete" asp-controller="UsSection" asp-route-id="@item.Id">
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                </td>
+                            </tr>
+                            }
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

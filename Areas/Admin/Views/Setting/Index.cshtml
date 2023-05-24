@@ -1,0 +1,54 @@
+﻿@{
+    int count = 0;
+}
+@model List<Setting>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title">Us Section</h3>
+                <a asp-action="Create" asp-controller="UsSection"> <button class="btn btn-success">Create</button></a>
+                <div class="table-responsive">
+                    <table class="table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0">#</th>
+                                <th class="border-top-0">Key</th>
+                                <th class="border-top-0">Value</th>
+                                <th class="border-top-0">Settings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>@(++count)</td>
+                                    <td>@item.Key</td>
+                                    <td>@item.Value</td>
+                                    <td>
+                                        <form method="get" asp-action="Update" asp-controller="Setting" asp-route-id="@item.Id">
+                                            <button class="btn btn-warning">Edit</button>
+                                        </form>
+                                  
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+</div>
